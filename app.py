@@ -5,7 +5,7 @@ from nltk.corpus import stopwords
 import string
 from nltk.stem.porter import PorterStemmer
 ps = PorterStemmer()
-def transfrom_txt(txt):
+def transform_txt(txt):
   txt = txt.lower()
   txt = nltk.word_tokenize(txt)
 
@@ -30,7 +30,7 @@ def transfrom_txt(txt):
 nltk.download('punkt')
 nltk.download('stopwords')
 tf = pickle.load(open('tk.pkl','rb'))
-model = pickle.load(open('multi.pkl','rb'))
+model = pickle.load(open('voting.pkl','rb'))
 
 
 st.title('Spam Classifier')
@@ -38,7 +38,7 @@ st.title('Spam Classifier')
 input_sms = st.text_input("Please Enter the message")
 
 if st.button('Predict'):
-  transform_sms = transfrom_txt(input_sms)
+  transform_sms = transform_txt(input_sms)
 
   vector_input = tf.transform([transform_sms])
 
